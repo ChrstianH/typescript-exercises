@@ -87,13 +87,13 @@ console.log(
 
 let n1: number = 15.16698;
 let n2: number = 7.78714;
-let n3: number = parseFloat("12.3");
-let n4: number = parseInt(true.toString());
-let n5: number = parseInt(false.toString());
-let n6: number = parseInt("321");
-let n7: number = parseInt("Supercode");
-let n8: number = parseFloat("3.14random");
-let n9: number = parseInt("32px");
+let n3: number = "12.3";
+let n4: number = "3.14random";
+let n5: number = "32px";
+let n6: number = true;
+let n7: number = false;
+let n8: number = "321";
+let n9: number = "Supercode";
 
 console.log(Number(n1));
 console.log(Number(n2));
@@ -104,5 +104,3 @@ console.log(Number(n6));
 console.log(Number(n7));
 console.log(Number(n8));
 console.log(Number(n9));
-
-
