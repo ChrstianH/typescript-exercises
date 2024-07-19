@@ -82,3 +82,27 @@ console.log(
   num9.toString(8),
   num9.toString(16)
 );
+
+// Number-Methods-TS-Level-1_4
+
+let n1: number = 15.16698;
+let n2: number = 7.78714;
+let n3: number = parseFloat("12.3");
+let n4: number = parseInt(true.toString());
+let n5: number = parseInt(false.toString());
+let n6: number = parseInt("321");
+let n7: number = parseInt("Supercode");
+let n8: number = parseFloat("3.14random");
+let n9: number = parseInt("32px");
+
+console.log(Number(n1));
+console.log(Number(n2));
+console.log(Number(n3));
+console.log(Number(n4));
+console.log(Number(n5));
+console.log(Number(n6));
+console.log(Number(n7));
+console.log(Number(n8));
+console.log(Number(n9));
+
+
