@@ -87,13 +87,13 @@ console.log(
 
 let n1: number = 15.16698;
 let n2: number = 7.78714;
-let n3: number = "12.3";
-let n4: number = "3.14random";
-let n5: number = "32px";
-let n6: number = true;
-let n7: number = false;
-let n8: number = "321";
-let n9: number = "Supercode";
+let n3: string = "12.3";
+let n4: string = "3.14random";
+let n5: string = "32px";
+let n6: boolean = true;
+let n7: boolean = false;
+let n8: string = "321";
+let n9: string = "Supercode";
 
 console.log(Number(n1));
 console.log(Number(n2));
