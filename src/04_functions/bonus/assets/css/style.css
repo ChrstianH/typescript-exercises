@@ -1,0 +1,108 @@
+@font-face {
+  font-family: Orbitron;
+  src: url(../fonts/Orbitron/static/Orbitron-Regular.ttf);
+}
+
+@font-face {
+  font-family: Lato;
+  src: url(../fonts/Lato/Lato-Regular.ttf);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  max-width: 1280px;
+  margin: 0 auto;
+  background-color: #2c2c2c;
+}
+
+h1 {
+  color: white;
+  text-align: center;
+  font-family: Lato;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  gap: 60px;
+  align-items: center;
+  margin: 100px 165px auto 165px;
+}
+
+main > div {
+  display: flex;
+  gap: 90px;
+}
+
+.display-container {
+  display: flex;
+  flex-direction: column;
+  gap: 109px;
+}
+.display {
+  width: 430px;
+  height: 430px;
+  border-radius: 30px;
+  padding: 30px;
+}
+
+.display1 {
+  border: 5px solid #97f5bb;
+}
+.display2 {
+  border: 5px solid #525df4;
+}
+
+.score {
+  color: #fdf860;
+  text-align: center;
+  font-family: Orbitron;
+  font-size: 130px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  background-color: #000;
+  padding-top: 100px;
+  padding-bottom: 100px;
+  border-radius: 30px;
+}
+
+.buttons {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+
+.button {
+  color: #fff;
+  text-align: center;
+  font-family: Lato;
+  font-size: 30px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  padding: 30px;
+  border-radius: 20px;
+}
+
+.button1 {
+  background-color: #97f5bb;
+}
+.button2 {
+  background-color: #525df4;
+}
+button#reset {
+  color: #2c2c2c;
+  font-family: Lato;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  padding: 10px 40px;
+  border-radius: 10px;
+}
