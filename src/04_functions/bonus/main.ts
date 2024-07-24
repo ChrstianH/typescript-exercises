@@ -1,12 +1,12 @@
 const score1 = document.getElementById("score1") ?? new HTMLElement();
 const score2 = document.getElementById("score2") ?? new HTMLElement();
 
-const btn1 = document.getElementById("btn1") ?? new HTMLElement();
-const btn2 = document.getElementById("btn2") ?? new HTMLElement();
-const btn3 = document.getElementById("btn3") ?? new HTMLElement();
-const btn4 = document.getElementById("btn4") ?? new HTMLElement();
-const btn5 = document.getElementById("btn5") ?? new HTMLElement();
-const btn6 = document.getElementById("btn6") ?? new HTMLElement();
+const btn1 = document.getElementById("home_plus_1") ?? new HTMLElement();
+const btn2 = document.getElementById("home_plus_2") ?? new HTMLElement();
+const btn3 = document.getElementById("home_plus_3") ?? new HTMLElement();
+const btn4 = document.getElementById("away_plus_1") ?? new HTMLElement();
+const btn5 = document.getElementById("away_plus_2") ?? new HTMLElement();
+const btn6 = document.getElementById("away_plus_3") ?? new HTMLElement();
 
 const btnReset = document.getElementById("reset") ?? new HTMLElement();
 

@@ -41,19 +41,19 @@ console.log(result);
 
 // ** Functions-TS-Grundlagen-Level-1_8 **
 
-function myAge(birthYear: number) {
+function calcMyAge(birthYear: number): number {
   return new Date().getFullYear() - birthYear;
 }
 
-console.log(myAge(1976));
+console.log(calcMyAge(1976));
 
-function diffAge(birthYear1: number, birthYear2: number) {
+function calcAgediff(birthYear1: number, birthYear2: number):number {
   const altersDifferenz =
     birthYear1 < birthYear2 ? birthYear2 - birthYear1 : birthYear1 - birthYear2;
   return altersDifferenz;
 }
 
-const ageDiff = diffAge(1976, 1987);
+const ageDiff = calcAgediff(1976, 1987);
 console.log(ageDiff);
 
 // ** Functions-TS-Grundlagen-Level-1_9 **
