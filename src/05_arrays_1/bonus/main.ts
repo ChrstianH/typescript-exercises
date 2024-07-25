@@ -17,11 +17,12 @@ function removeItem(atTheBack: boolean): void {
 }
 
 function addItemAt(todoItem: string, index: number): void {
-  const zwischenspeicher: string[] = toDoItems.splice(index);
-  toDoItems.push(todoItem);
-  for (let i = 0; i < zwischenspeicher.length; i++) {
-    toDoItems.push(zwischenspeicher[i]);
-  }
+  toDoItems.splice(index, 0, todoItem);
+  // const zwischenspeicher: string[] = toDoItems.splice(index);
+  // toDoItems.push(todoItem);
+  // for (let i = 0; i < zwischenspeicher.length; i++) {
+  //   toDoItems.push(zwischenspeicher[i]);
+  // }
 }
 
 function removeItemAt(index: number): void {
