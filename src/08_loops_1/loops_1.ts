@@ -134,11 +134,19 @@ console.log(splitText(text));
 
 let numbers: number[] = [5, 22, 15, 100, 55];
 
-const pElement3 = document.getElementById("loopContainer3")
-for(let number:number of numbers {
-    for(let i:number = 2; i < Math.ceil(number/2); i++) {
-        if(number%i === 0) {
-            
+divContainer = document.querySelector(".loopContainer3");
+let pElement3 = document.createElement("p");
+
+pElement3.innerHTML = "";
+for(let number of numbers) {
+  console.log(number)
+    for(let i:number = 2; i <= Math.ceil(number/2); i++) {
+      console.log(i)
+        if(number % i === 0) {
+            pElement3.innerHTML += `${number.toString()} is dividable by ${i.toString()}. The result is ${(number/i).toString()}.`
+            pElement3.innerHTML += "<br>"
         }
     }
-})
+}
+divContainer?.appendChild(pElement3);
+
