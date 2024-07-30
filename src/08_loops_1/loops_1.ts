@@ -84,14 +84,15 @@ console.log(createImageNames());
 
 // Loops-TS-Level-2_2
 
-const repetitionsElement: any =
-  document.getElementById("repetitions") ?? new HTMLElement();
+const repetitionsElement = document.getElementById(
+  "repetitions"
+) as HTMLInputElement;
 const buttonElement = document.getElementById("doLoops") ?? new HTMLElement();
 const pElement2 = document.getElementById("output") ?? new HTMLElement();
-buttonElement.addEventListener("click", function (event) {
+buttonElement.addEventListener("click", function (event: MouseEvent) {
   event.preventDefault();
   pElement2.textContent = "L";
-  let repetitions: number = repetitionsElement.value;
+  let repetitions: number = Number(repetitionsElement.value);
   for (let i: number = 0; i < repetitions; i++) {
     pElement2.textContent += "o";
   }
@@ -151,3 +152,28 @@ for (let number of numbers) {
   }
 }
 divContainer.appendChild(pElement3);
+
+// Loops-TS-Level-3_3
+
+const loopCountElement2 = document.getElementById(
+  "loopCount"
+) as HTMLInputElement;
+const buttonElement2 = document.getElementById("loopBtn") ?? new HTMLElement();
+const pElement4 = document.getElementById("loopOutput") ?? new HTMLElement();
+buttonElement2.addEventListener("click", function (event: MouseEvent) {
+  event.preventDefault();
+  let count: number = Number(loopCountElement2.value);
+  if (count <= 0) {
+    window.alert("Fehler: Zahl muss größer als 0 sein!");
+  } else {
+    pElement4.textContent = "L";
+    for (let i: number = 0; i < count; i++) {
+      if (i % 2 !== 0 && count % 2 === 0) {
+        pElement4.textContent += "O";
+      } else {
+        pElement4.textContent += "o";
+      }
+    }
+    pElement4.textContent += "p";
+  }
+});
