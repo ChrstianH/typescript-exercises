@@ -105,36 +105,32 @@ const scores: number[] = [
   49, 41, 95, 75, 36, 45, 37, 61, 94, 70, 91, 24, 50, 67, 66,
 ];
 
-let scoreSum: number = 0;
-let scoreAvg: number = 0;
+function calcAverage(scores: number[]): string {
+  let scoreSum: number = 0;
 
-for (let score of scores) {
-  scoreSum += score;
+  for (let score of scores) {
+    scoreSum += score;
+  }
+  let scoreAvg: number = scoreSum / scores.length;
+  console.log(scoreAvg);
+  switch (true) {
+    case scoreAvg < 50:
+      return "Ungenügend";
+    case scoreAvg >= 50 && scoreAvg < 60:
+      return "Mangelhaft";
+    case scoreAvg >= 60 && scoreAvg < 70:
+      return "Ausreichend";
+    case scoreAvg >= 70 && scoreAvg < 80:
+      return "Befridigend";
+    case scoreAvg >= 80 && scoreAvg < 90:
+      return "Gut";
+    case scoreAvg >= 90:
+      return "Sehr gut";
+    default:
+      return "";
+  }
 }
-scoreAvg = scoreSum / scores.length;
-console.log(scoreAvg);
-switch (true) {
-  case scoreAvg < 50:
-    console.log("Ungenügend");
-    break;
-  case scoreAvg >= 50 && scoreAvg < 60:
-    console.log("Mangelhaft");
-    break;
-  case scoreAvg >= 60 && scoreAvg < 70:
-    console.log("Ausreichend");
-    break;
-  case scoreAvg >= 70 && scoreAvg < 80:
-    console.log("Befridigend");
-    break;
-  case scoreAvg >= 80 && scoreAvg < 90:
-    console.log("Gut");
-    break;
-  case scoreAvg >= 90:
-    console.log("Sehr gut");
-    break;
-  default:
-    break;
-}
+console.log(calcAverage(scores));
 
 // Loops-TS-Level-3_7
 
@@ -167,10 +163,11 @@ const allGermanLetters = [
   "Z",
 ];
 
+const specialChars: string =
+  "ÄäÖöÜü^°@!\"§$%&/()=?+*~#',.-:;_<>|{}[]\\ 1234567890";
+
 function encodeText(textToEncode: string): string {
   let encodedText: string = "";
-  const specialChars: string =
-    "ÄäÖöÜü^°@!\"§$%&/()=?+*~#',.-:;_<>|{}[]\\ 1234567890";
   for (let index: number = 0; index < textToEncode.length; index++) {
     let charAtIndex: string = textToEncode.charAt(index);
 
