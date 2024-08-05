@@ -53,7 +53,8 @@ showHtmlError();
 // Enum-TS-Level-2_2
 
 type Color = {
-  code: string;
+  key: string;
+  value: string;
 };
 
 enum ClothingColor {
@@ -65,16 +66,23 @@ enum ClothingColor {
   Grau = "#808080",
 }
 
-const allColors: Color[] = [];
-for (let color in ClothingColor) {
-  allColors.push(color);
-}
+const allColors: Color[] = [
+  { key: "Gelb", value: ClothingColor.Gelb },
+  { key: "Orange", value: ClothingColor.Orange },
+  { key: "Pink", value: ClothingColor.Pink },
+  { key: "Blau", value: ClothingColor.Blau },
+  { key: "Lila", value: ClothingColor.Lila },
+  { key: "Grau", value: ClothingColor.Grau },
+];
+// for (let color in ClothingColor) {
+//   allColors.push(color);
+// }
 console.log(allColors);
 
-allColors.forEach((color) => {
+allColors.forEach((color: Color) => {
   const button = document.createElement("button");
-  button.style.backgroundColor = ClothingColor[color];
-  button.textContent = color;
+  button.style.backgroundColor = color.value;
+  button.textContent = color.key;
   document.body.appendChild(button);
 });
 
