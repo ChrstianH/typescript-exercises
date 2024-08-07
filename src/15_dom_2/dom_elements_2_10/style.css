@@ -56,7 +56,7 @@ div {
   margin: 0;
   font-size: 3rem;
   font-weight: 800;
-  color: green;
+  color: yellow;
   padding: 5px 50px;
   transition: color 5s;
 }
