@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DOM-Elements-3_1</title>
+  </head>
+  <style>
+    #output {
+      display: flex;
+    }
+  </style>
+  <body>
+    <h2>Meine Todos</h2>
+    <form action="#" id="form_todo">
+      <input type="text" name="todo" id="input_todo" />
+      <button type="submit">add</button>
+    </form>
+    <div id="output"></div>
+
+    <div id="app">
+      <form id="book-form">
+        <input
+          id="title-input"
+          type="text"
+          placeholder="Add a title"
+          required
+        />
+        <input
+          id="author-input"
+          type="text"
+          placeholder="Add author name"
+          required
+        />
+        <select id="genre-select" required>
+          <!-- als Platzelement für das Select was zu Anfang ausgewählt sit -->
+          <option value="" disabled selected>Select genre</option>
+          <option value="Fiction">Fiction</option>
+          <option value="Non-Fiction">Non-Fiction</option>
+          <option value="Fantasy">Fantasy</option>
+          <option value="History">History</option>
+          <option value="Mystery">Mystery</option>
+        </select>
+        <input
+          id="year-input"
+          type="number"
+          placeholder="Add year"
+          required
+          min="0"
+          max="2024"
+        />
+        <input
+          id="pages-input"
+          type="number"
+          placeholder="Add number of pages"
+          required
+          min="1"
+          max="50000"
+        />
+        <div id="error-text" class="error-message"></div>
+        <button type="submit">Add book</button>
+      </form>
+      <ul id="book-list"></ul>
+    </div>
+    <script type="module" src="./dom.ts"></script>
+    <script type="module" src="../../bonus/books.ts"></script>
+  </body>
+</html>
