@@ -1,14 +1,15 @@
-import Manager from "./classes/Manager";
-import Subordinate from "./classes/Subordinate";
+import IceCreamParlor from "./classes/IceCreamParlor";
 
-const subordinate1: Subordinate = new Subordinate("Sub1", 20, "pos1");
-const subordinate2: Subordinate = new Subordinate("Sub2", 23, "pos2");
-const subordinate3: Subordinate = new Subordinate("Sub3", 27, "pos3");
+const selectElement = document.getElementById(
+  "iceCream-select"
+) as HTMLSelectElement;
 
-const manager: Manager = new Manager("Manager", 45, "Board");
-
-manager.addSubordinate(subordinate1);
-manager.addSubordinate(subordinate2);
-manager.addSubordinate(subordinate3);
-
-console.table(manager);
+const iceCreamParlor: IceCreamParlor = new IceCreamParlor();
+const flavorArray = iceCreamParlor.listFlavors();
+flavorArray.forEach((flavor: string) => {
+  const optionEl = document.createElement("option") as HTMLOptionElement;
+  optionEl.value = flavor;
+  optionEl.textContent = flavor;
+  selectElement.appendChild(optionEl);
+  //  selectElement.setAttribute("size", flavorArray.length.toString());
+});
