@@ -1,7 +1,7 @@
-// Intro-JS-Level-1_11
+// Intro-TS-Level-1_11
 console.log("Welcome :)");
 
-// Intro-JS-Level-1_12
+// Intro-TS-Level-1_12
 let dogName = "Leon";
 console.log(dogName);
 dogName = "elf";
