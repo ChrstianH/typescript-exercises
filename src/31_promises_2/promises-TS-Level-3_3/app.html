@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fast-Food-Restaurant Simulation</title>
+    <script module="type" src="./fast-food.ts" defer></script>
+    <style>
+      div#orders > div {
+        margin-top: 5px;
+        border: 1px solid black;
+        padding: 10px;
+        display: flex;
+        flex-direction: column;
+        width: 220px;
+      }
+      div#orders > div > p {
+        margin: 3px 0;
+      }
+    </style>
+  </head>
+  <body>
+    <button id="startSimulation">Start Fast Food Simulation</button>
+    <div id="orders"></div>
+  </body>
+</html>
