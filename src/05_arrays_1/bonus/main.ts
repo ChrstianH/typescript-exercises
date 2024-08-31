@@ -1,4 +1,4 @@
-const toDoItems: string[] = [];
+let toDoItems: string[] = [];
 
 function addItem(todoItem: string, atTheBack: boolean): void {
   if (atTheBack) {
@@ -18,11 +18,6 @@ function removeItem(atTheBack: boolean): void {
 
 function addItemAt(todoItem: string, index: number): void {
   toDoItems.splice(index, 0, todoItem);
-  // const zwischenspeicher: string[] = toDoItems.splice(index);
-  // toDoItems.push(todoItem);
-  // for (let i = 0; i < zwischenspeicher.length; i++) {
-  //   toDoItems.push(zwischenspeicher[i]);
-  // }
 }
 
 function removeItemAt(index: number): void {
@@ -45,13 +40,11 @@ function askForUserInput(): void {
   const newInputs: string = window.prompt(
     "Gib 5 ToDo-Items durch Komma getrennt ein"
   )!;
-  const newInputArray: string[] = newInputs.split(",");
+  const newInputArray: string[] = newInputs
+    .split(",")
+    .map((input) => input.trim());
   if (newInputArray.length === 5) {
-    toDoItems.push(newInputArray[0]);
-    toDoItems.push(newInputArray[1]);
-    toDoItems.push(newInputArray[2]);
-    toDoItems.push(newInputArray[3]);
-    toDoItems.push(newInputArray[4]);
+    toDoItems = [...toDoItems, ...newInputArray];
   } else {
     window.alert("Die Anzahl der Items ist nicht korrekt.");
   }
