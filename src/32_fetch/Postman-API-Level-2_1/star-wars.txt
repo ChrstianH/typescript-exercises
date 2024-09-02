@@ -1,0 +1,39 @@
+Aufgabe 1 - https://swapi.dev/api/planets
+=========
+- Wie lange hat der Aufruf gedauert?
+    334ms
+- Wieviele Planeten bekommst du als Antwort?
+    60
+- Wie lautet der Name des vorletzten Planeten?
+    Coruscant
+- Wie ist das Klima (climate) des Planten Hoth?
+    frozen
+- Versuche selbst, die 3. Seite (page=3) aufzurufen.
+    https://swapi.dev/api/planets?page=3
+- Wie lautet der Name des zweiten Planeten auf dieser Seite?
+    Corellia
+
+Aufgabe 2 - https://swapi.dev/api/people
+=========
+- Wer ist die erste Person in der Antwort?
+    Luke Skywalker
+- Rufe sein Raumschiff ab - wie heißt es?
+    T-65 X-wing, Lambda-class T-4a shuttle
+- Wie lautet die Haarfarbe und die Augenfarbe der letzten Person aus der Antwort?
+    Obi-Wan Kenobi
+    Haarfarbe: "auburn, white",
+    Augenfarbe: "blue-gray",
+- Rufe die Seite 3 ab.
+    - Wer steht dort ganz oben?
+        Boba Fett
+    - In welchen Filmen kommt die Person vor?
+        The Empire Strikes Back (https://swapi.dev/api/films/2/)
+        Return of the Jedi (https://swapi.dev/api/films/3/)
+        Attack of the Clones (https://swapi.dev/api/films/5/)
+- Suche nach Prinzessin Leia.
+Wie man einen Suchtext im Request mitgeben kann, findest du in der [Dokumentation](https://swapi.dev/documentation)
+    https://swapi.dev/api/people/?search=Leia
+    - Wie groß ist sie?
+        150cm
+    - Was ist ihr Heimatplanet?
+        Alderan (https://swapi.dev/api/planets/2/)
