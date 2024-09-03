@@ -41,11 +41,14 @@ function pay(customerDiv: HTMLDivElement): Promise<string> {
 
 function makeBurger(customerDiv: HTMLDivElement): Promise<string> {
   return new Promise((resolve) => {
-    const orderElem = document.createElement("p") as HTMLParagraphElement;
+    let orderElem = document.createElement("p") as HTMLParagraphElement;
     orderElem.textContent = "Bereite einen Burger vor";
     customerDiv.appendChild(orderElem);
     console.log("Bereite einen Burger vor");
     setTimeout(() => {
+      orderElem = document.createElement("p") as HTMLParagraphElement;
+      orderElem.textContent = "Burger fertig";
+      customerDiv.appendChild(orderElem);
       resolve("Burger fertig");
     }, getRandomDurationInMilliseconds());
   });
@@ -53,11 +56,14 @@ function makeBurger(customerDiv: HTMLDivElement): Promise<string> {
 
 function makeFries(customerDiv: HTMLDivElement): Promise<string> {
   return new Promise((resolve) => {
-    const orderElem = document.createElement("p") as HTMLParagraphElement;
+    let orderElem = document.createElement("p") as HTMLParagraphElement;
     orderElem.textContent = "Bereite Pommes vor";
     customerDiv.appendChild(orderElem);
     console.log("Bereite Pommes vor");
     setTimeout(() => {
+      orderElem = document.createElement("p") as HTMLParagraphElement;
+      orderElem.textContent = "Pommes fertig";
+      customerDiv.appendChild(orderElem);
       resolve("Pommes fertig");
     }, getRandomDurationInMilliseconds());
   });
@@ -68,11 +74,14 @@ function makeDrink(
   customerDiv: HTMLDivElement
 ): Promise<string> {
   return new Promise((resolve) => {
-    const orderElem = document.createElement("p") as HTMLParagraphElement;
+    let orderElem = document.createElement("p") as HTMLParagraphElement;
     orderElem.textContent = `Fülle ${drink} ein`;
     customerDiv.appendChild(orderElem);
     console.log(`Fülle ${drink} ein`);
     setTimeout(() => {
+      orderElem = document.createElement("p") as HTMLParagraphElement;
+      orderElem.textContent = `${drink} fertig`;
+      customerDiv.appendChild(orderElem);
       resolve(`${drink} fertig`);
     }, getRandomDurationInMilliseconds());
   });
@@ -89,17 +98,7 @@ function processOrder(
     makeBurger(customerDiv),
     makeFries(customerDiv),
     makeDrink(drink, customerDiv),
-  ]).then((resp: [string, string, string, string, string]) => {
-    let orderElem = document.createElement("p") as HTMLParagraphElement;
-    orderElem.textContent = resp[2];
-    customerDiv.appendChild(orderElem);
-    orderElem = document.createElement("p") as HTMLParagraphElement;
-    orderElem.textContent = resp[3];
-    customerDiv.appendChild(orderElem);
-    orderElem = document.createElement("p") as HTMLParagraphElement;
-    orderElem.textContent = resp[4];
-    customerDiv.appendChild(orderElem);
-
+  ]).then((resolve: [string, string, string, string, string]) => {
     console.log("Bestellung abgeschlossen.");
     customerDiv.innerHTML += "✅ Bestellung abgeschlossen.<br>";
   });
