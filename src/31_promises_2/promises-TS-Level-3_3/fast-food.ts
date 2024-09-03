@@ -19,7 +19,7 @@ function createCustomerOrder(
 
 //  hier die einzelnen Functions einfügen, die jeweils ein Promise zurückgeben
 function order(
-  customerNumber: number,
+  _customerNumber: number,
   customerDiv: HTMLDivElement
 ): Promise<string> {
   return new Promise((resolve) => {
@@ -98,7 +98,7 @@ function processOrder(
     makeBurger(customerDiv),
     makeFries(customerDiv),
     makeDrink(drink, customerDiv),
-  ]).then((resolve: [string, string, string, string, string]) => {
+  ]).then((_resolve: [string, string, string, string, string]) => {
     console.log("Bestellung abgeschlossen.");
     customerDiv.innerHTML += "✅ Bestellung abgeschlossen.<br>";
   });
