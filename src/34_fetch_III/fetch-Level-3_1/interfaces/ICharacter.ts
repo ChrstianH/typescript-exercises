@@ -6,8 +6,8 @@ export interface ICharacter {
 export interface IInfo {
   count: number;
   pages: number;
-  next: string;
-  prev: null;
+  next: string | null;
+  prev: string | null;
 }
 
 export interface ICharacterResult {

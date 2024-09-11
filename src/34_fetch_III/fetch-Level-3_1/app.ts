@@ -19,70 +19,62 @@ const episodeElement = document.getElementById(
   "api-episode"
 ) as HTMLAnchorElement;
 
-characterElement.addEventListener("click", () => {
-  fetch(CHARACTER_ROUTE)
-    .then((response: Response) => {
-      return response.json();
-    })
-    .then((data: any) => {
-      outputElement.innerHTML = "";
-      data.results.forEach((result: ICharacterResult) => {
-        const characterContainer = document.createElement(
-          "div"
-        ) as HTMLDivElement;
-        characterContainer.className = "card";
+characterElement.addEventListener("click", async () => {
+  try {
+    const response = await fetch(CHARACTER_ROUTE);
+    const data = await response.json();
+    const results: ICharacterResult[] = data.results;
+    outputElement.innerHTML = "";
 
-        characterContainer.innerHTML = displayCharacter(result);
-        outputElement.appendChild(characterContainer);
-      });
-    })
-    .catch((error: Error) => {
-      console.error(error);
-    });
+    for (const result of results) {
+      const characterContainer = document.createElement(
+        "div"
+      ) as HTMLDivElement;
+      characterContainer.className = "card";
+
+      characterContainer.innerHTML = displayCharacter(result);
+      outputElement.appendChild(characterContainer);
+    }
+  } catch (error) {
+    console.error(error);
+  }
+});
+locationElement.addEventListener("click", async () => {
+  try {
+    const response = await fetch(LOCATION_ROUTE);
+    const data = await response.json();
+    const results: ILocationResult[] = data.results;
+    outputElement.innerHTML = "";
+
+    for (const result of results) {
+      const locationContainer = document.createElement("div") as HTMLDivElement;
+      locationContainer.className = "card";
+
+      locationContainer.innerHTML = await displayLocation(result);
+      outputElement.appendChild(locationContainer);
+    }
+  } catch (error) {
+    console.error(error);
+  }
 });
 
-locationElement.addEventListener("click", () => {
-  fetch(LOCATION_ROUTE)
-    .then((response: Response) => {
-      return response.json();
-    })
-    .then((data: any) => {
-      outputElement.innerHTML = "";
-      data.results.forEach((result: ILocationResult) => {
-        const locationContainer = document.createElement(
-          "div"
-        ) as HTMLDivElement;
-        locationContainer.className = "card";
+episodeElement.addEventListener("click", async () => {
+  try {
+    const response = await fetch(EPISODES_ROUTE);
+    const data = await response.json();
+    const results: IEpisodeResult[] = data.results;
+    outputElement.innerHTML = "";
 
-        locationContainer.innerHTML = displayLocation(result);
-        outputElement.appendChild(locationContainer);
-      });
-    })
-    .catch((error: Error) => {
-      console.error(error);
-    });
-});
+    for (const result of results) {
+      const episodeContainer = document.createElement("div") as HTMLDivElement;
+      episodeContainer.className = "card";
 
-episodeElement.addEventListener("click", () => {
-  fetch(EPISODES_ROUTE)
-    .then((response: Response) => {
-      return response.json();
-    })
-    .then((data: any) => {
-      outputElement.innerHTML = "";
-      data.results.forEach((result: IEpisodeResult) => {
-        const episodeContainer = document.createElement(
-          "div"
-        ) as HTMLDivElement;
-        episodeContainer.className = "card";
-
-        episodeContainer.innerHTML = displayEpisode(result);
-        outputElement.appendChild(episodeContainer);
-      });
-    })
-    .catch((error: Error) => {
-      console.error(error);
-    });
+      episodeContainer.innerHTML = await displayEpisode(result);
+      outputElement.appendChild(episodeContainer);
+    }
+  } catch (error) {
+    console.error(error);
+  }
 });
 
 function displayCharacter(character: ICharacterResult): string {
@@ -100,40 +92,40 @@ function displayCharacter(character: ICharacterResult): string {
   return resultString;
 }
 
-function displayLocation(location: ILocationResult): string {
+async function displayLocation(result: ILocationResult) {
   const resultString = `
     <div>
-      <p>Name: ${location.name}</p>
-      <p>Type: ${location.type}</p>
-      <p>Dimension: ${location.dimension}</p>
-      <p>Residents: ${fetchResidents(location.residents)}</p>
+      <p>Name: ${result.name}</p>
+      <p>Type: ${result.type}</p>
+      <p>Dimension: ${result.dimension}</p>
+      <p>Residents: ${await fetchResidents(result.residents)}</p>
     </div>
     `;
   return resultString;
 }
 
-function fetchResidents(locationResidents: string[]): string {
-  const resultArray: string[] = [];
-  locationResidents.forEach((resident: string) => {
-    fetch(resident)
-      .then((response: Response) => {
-        return response.json();
-      })
-      .then((data: ICharacterResult) => {
-        resultArray.push(data.name);
-      })
-      .catch((error: Error) => console.error(error));
-  });
+async function fetchResidents(locationResidents: string[]): Promise<string> {
+  let resultArray: string[] = [];
+  for (const resident of locationResidents) {
+    //  locationResidents.forEach(async (resident: string) => {
+    try {
+      const response = await fetch(resident);
+      const data = await response.json();
+      resultArray.push(data.name);
+    } catch (error) {
+      console.error(error);
+    }
+  }
   return resultArray.join(", ");
 }
 
-function displayEpisode(episode: IEpisodeResult): string {
+async function displayEpisode(result: IEpisodeResult) {
   const resultString = `
     <div>
-      <p>Name: ${episode.name}</p>
-      <p>Air date: ${episode.air_date}</p>
-      <p>episode: ${episode.episode}</p>
-      <p>Residents: ${fetchResidents(episode.characters)}</p>
+      <p>Name: ${result.name}</p>
+      <p>Air date: ${result.air_date}</p>
+      <p>Episode: ${result.episode}</p>
+      <p>Characters: ${await fetchResidents(result.characters)}</p>
     </div>
     `;
   return resultString;
