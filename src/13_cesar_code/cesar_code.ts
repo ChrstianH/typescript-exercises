@@ -1,51 +1,26 @@
+import { getEncodedText, getDecodedText } from "./utils/encryption";
+
 const messageElement = document.getElementById("message") as HTMLInputElement;
 const shiftElement = document.getElementById("shift") as HTMLInputElement;
-
-const alphabet: string[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
 
 function encodeText(): void {
   let message: string = messageElement.value;
   const shift: number = Number(shiftElement.value);
 
-  let messageArray: string[] = message.toUpperCase().split("");
-  let counter: number = 0;
-  do {
-    const characterToEncode = messageArray[counter];
-    let positionInAlphabet = alphabet.indexOf(characterToEncode);
-    positionInAlphabet = (positionInAlphabet + shift) % 26;
-    messageArray[counter] = alphabet[positionInAlphabet];
-
-    counter++;
-  } while (counter < message.length);
-
-  message = messageArray.join("");
+  const newMessage: string = getEncodedText(message, shift);
 
   const outputElement = document.getElementById("output") as HTMLElement;
-  outputElement.textContent = message;
+  outputElement.textContent = newMessage;
 }
 
 function decodeText(): void {
   let message: string = messageElement.value;
   const shift: number = Number(shiftElement.value);
 
-  let messageArray: string[] = message.toUpperCase().split("");
-  let counter: number = 0;
-
-  do {
-    const characterToEncode = messageArray[counter];
-    let positionInAlphabet = alphabet.indexOf(characterToEncode);
-    positionInAlphabet = positionInAlphabet - shift;
-    positionInAlphabet =
-      positionInAlphabet < 0 ? positionInAlphabet + 26 : positionInAlphabet;
-    messageArray[counter] = alphabet[positionInAlphabet];
-
-    counter++;
-  } while (counter < message.length);
-
-  message = messageArray.join("");
+  const newMessage: string = getDecodedText(message, shift);
 
   const outputElement = document.getElementById("output") as HTMLElement;
-  outputElement.textContent = message;
+  outputElement.textContent = newMessage;
 }
 
 const encodeBtn = document.getElementById("encode") as HTMLButtonElement;
