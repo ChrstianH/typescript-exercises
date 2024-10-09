@@ -25,8 +25,9 @@ export const getDecodedText = (msg: string, shift: number): string => {
     let positionInAlphabet = alphabet.indexOf(characterToEncode);
     if (positionInAlphabet !== -1) {
       positionInAlphabet = positionInAlphabet - shift;
-      positionInAlphabet =
-        positionInAlphabet < 0 ? positionInAlphabet + 26 : positionInAlphabet;
+      while (positionInAlphabet < 0) {
+        positionInAlphabet += 26;
+      }
       messageArray[counter] = alphabet[positionInAlphabet];
     }
     counter++;
